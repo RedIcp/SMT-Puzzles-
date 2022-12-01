@@ -39,7 +39,5 @@
 )
 
 (check-sat)
-(get-model)
 (get-value (s e n d m o r y))
-
 ; 28999 + 23131 = 52130
