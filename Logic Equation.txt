@@ -9,6 +9,7 @@
 (assert (= b (* 2 c)))
 (assert (> (+ b d) (* 4 c)))
 (assert (= d (* 4 c)))
+(assert (distinct a b c d))
 
 (check-sat)
 
