@@ -1,0 +1,27 @@
+(declare-const a Int)
+(declare-const b Int)
+(declare-const c Int)
+(declare-const d Int)
+(declare-const tempA Int)
+(declare-const determinent Int)
+
+(assert (= a 3))
+(assert (= b 1))
+(assert (= c 5))
+(assert (= d 2))
+
+(assert (= determinent (- (* a d) (* c b))))
+(assert (/ 1 determinent))
+(assert (= b (- b)))
+(assert (= c (- c)))
+
+(assert (= tempA a))
+(assert (= a d))
+(assert (= d tempA))
+
+
+(check-sat)
+
+(get-model)
+
+(get-value (a b c d))
