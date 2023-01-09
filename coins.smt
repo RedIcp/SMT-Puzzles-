@@ -1,6 +1,3 @@
-; TODO it can take any amount of x,y and z
-
-
 ; Declare variables for the three denominations
 (declare-const x Int)
 (declare-const y Int)
@@ -17,11 +14,10 @@
 (assert (not (= y z)))
 
 ; Require that the denominations can make 20, 23, and 29 centos
-(assert (= 20 (+ x y z)))
-(assert (= 23 (+ x y z)))
-(assert (= 29 (+ x y z)))
+(assert (= 20 (+ x y y))) ;20 = 6 + 7 + 7
+(assert (= 23 (+ x x z))) ;23 = 6 + 6 + 11
+(assert (= 29 (+ y z z))) ;29 = 7 + 11 + 11
 
 ; Find a solution
 (check-sat)
-; 5, 7, 11
 (get-value (x y z))
