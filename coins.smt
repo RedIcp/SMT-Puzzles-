@@ -1,3 +1,6 @@
+; TODO it can take any amount of x,y and z
+
+
 ; Declare variables for the three denominations
 (declare-const x Int)
 (declare-const y Int)

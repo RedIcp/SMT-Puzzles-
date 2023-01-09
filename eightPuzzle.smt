@@ -23,7 +23,29 @@
 (declare-fun valid (Int Int Int Int Int Int Int Int Int) Bool)
 
 ; Define the function to check if a configuration is valid
-(define-fun valid ((a : Int) (b : Int) (c : Int) (d : Int) (e : Int) (f : Int) (g : Int) (h : Int)) : Bool
+; This function defines the conditions that must be satisfied for a configuration to be considered valid. 
+; It checks each tile to see if it is adjacent to the blank space and can be legally moved into it, 
+; and it returns true if the configuration is valid and false if it is not.
+(define-fun valid ((a Int) (b Int) (c Int) (d Int) (e Int) (f Int) (g Int) (h Int)) Bool
   (or (and (not (= e 0)) (= e (+ 1 a b c d g h)))
       (and (not (= d 0)) (= d (+ a b c e g h)))
       (and (not (= h 0)) (= h (+ a b c d e g)))
+      (and (not (= g 0)) (= g (+ a b c d e h)))
+      (and (not (= f 0)) (= f (+ a b c d e g)))
+      (and (not (= b 0)) (= b (+ a c d e f g)))
+      (and (not (= a 0)) (= a (+ b c d e f g)))
+      (and (not (= c 0)) (= c (+ a b d e f g)))
+  )
+)
+
+; Require that the initial configuration is valid
+(assert (valid a b c d e f g h))
+
+; Require that the final configuration is valid
+(assert (valid 1 2 3 4 5 6 7 8))
+
+; Find a solution
+(check-sat)
+
+; Print the solution
+(get-value (a b c d e f g h))
