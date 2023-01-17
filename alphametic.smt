@@ -7,37 +7,24 @@
 (declare-const r Int)
 (declare-const y Int)
 
-(declare-fun f (Int Bool) Int)
 
-(assert (> s 0))
-(assert (< (f s true) 9))
+(assert (and 
+        (>= s 0) (< s 10) 
+        (>= e 0) (< e 10) 
+        (>= n 0) (< n 10) 
+        (>= d 0) (< d 10) 
+        (>= m 0) (< m 10) 
+        (>= o 0) (< o 10) 
+        (>= r 0) (< r 10) 
+        (>= y 0) (< y 10)))
 
-(assert (> e 0))
-(assert (< (f e true) 9))
-
-(assert (> n 0))
-(assert (< (f n true) 9))
-
-(assert (> d 0))
-(assert (< (f d true) 9))
-
-(assert (> m 0))
-(assert (< (f m true) 9))
-
-(assert (> o 0))
-(assert (< (f o true) 9))
-
-(assert (> r 0))
-(assert (< (f r true) 9))
-
-(assert (> y 0))
-(assert (< (f y true) 9))
+(assert (distinct s e n d m o r y))
 
 (assert (= 
-        (+ (+ (+ s e)(+ n d)) (+ (+ m o)(+ r e))) 
-        (+ (+ m o)(+ n (+ e y))))
-)
+        (+ (* 1000 s) (* 100 e) (* 10 n) d (* 1000 m) (* 100 o) (* 10 r) e)
+        (+ (* 10000 m) (* 1000 o) (* 100 n) (* 10 e) y)
+))
+
 
 (check-sat)
 (get-value (s e n d m o r y))
-; 28999 + 23131 = 52130

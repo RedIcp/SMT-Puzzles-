@@ -37,5 +37,3 @@
 
 
 (get-value (detA detB detC detD))
-
-; MATRIX 2 ?
