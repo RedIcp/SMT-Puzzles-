@@ -51,8 +51,11 @@
     ; on each step, one jug remains unaltered, one of the others becomes either full or empty
     (forall ((t Int))
       (implies 
-        (<= 0 t N)  ; restriction to a finite situation is necessary, because of the 'exists' clause below
-        (exists ((j1 Int) (j2 Int) (j3 Int))  ; this way you don't have to work with a 'or' and all combinations explicitly written down...
+        ; restriction to a finite situation is necessary, because of the 'exists' clause below
+        (<= 0 t N)  
+        ; this way you don't have to work with a 'or' 
+        ; and all combinations explicitly written down...
+        (exists ((j1 Int) (j2 Int) (j3 Int))  
           (and
             (distinct j1 j2 j3)
             (<= 1 j1 3)

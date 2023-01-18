@@ -25,7 +25,6 @@
 		(<= 1 medicine 7)
 		(exists ((firstime Int) (secondtime Int))
 			(and
-                (<= 1 medicine 7)
                 (<= 1 firstime 5)
                 (<= 1 secondtime 5)
                 (distinct firstime secondtime)
